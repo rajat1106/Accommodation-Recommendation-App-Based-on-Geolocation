@@ -1,4 +1,4 @@
-import 'package:sdp_v2/screens/flashscreens.dart';
+import 'package:sdp_v2/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sdp_v2/screens/UserDetails.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: LoginScreen(),
+      home: SplashScreen(),
       routes: {
         
         SignupScreen.routeName: (ctx) => SignupScreen(),

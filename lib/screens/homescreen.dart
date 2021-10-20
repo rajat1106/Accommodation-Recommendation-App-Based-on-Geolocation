@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.fromLTRB(20, 10, 10, 10),
                     child: const Text(
-                      '👽 👽',
+                      '😎😎',
                       style: TextStyle(
                         fontSize: 35,
                         // fontWeight: FontWeight.bold,
