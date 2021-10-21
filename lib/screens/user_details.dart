@@ -21,7 +21,7 @@ class _UserInformationState extends State<UserInformation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Information'),
+        title: const Text('User Information'),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -45,7 +45,7 @@ class _UserInformationState extends State<UserInformation> {
                   });
                 });
               },
-              child: Text('Retrive'),
+              child: const Text('Retrive'),
             ),
 
             //Just Printing out the User Details with the help of ListTile Widget

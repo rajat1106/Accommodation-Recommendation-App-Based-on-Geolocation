@@ -1,11 +1,13 @@
+import 'package:sdp_v2/screens/account_screen.dart';
 import 'package:sdp_v2/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sdp_v2/screens/UserDetails.dart';
+import 'package:sdp_v2/screens/user_details.dart';
 import 'package:flutter/material.dart';
 import 'screens/login.dart';
 import 'screens/signup.dart';
 import 'screens/homescreen.dart';
+import 'screens/account_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
         SignupScreen.routeName: (ctx) => SignupScreen(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
+        AccountScreen.routeName: (ctx) => AccountScreen(),
         UserInformation.routeName: (ctx) => UserInformation()
       },
     );
