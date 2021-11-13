@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sdp_v2/screens/account_screen.dart';
+import 'package:sdp_v2/screens/roomate.dart';
+import 'accomodation.dart';
 import 'login.dart';
 
 // import 'signup.dart';
@@ -16,6 +19,7 @@ class HomeScreen extends StatelessWidget {
       body: FutureBuilder(
           future: _firebaseApp,
           builder: (context, snapshot) {
+
   //           drawer: Drawer(
   //   child: ListView(
   //     padding: EdgeInsets.zero,
@@ -50,6 +54,7 @@ class HomeScreen extends StatelessWidget {
             return Center(
               child: Column(
                 children: [
+                  
                   Align(
                     alignment: Alignment.topRight,
                     child: Padding(
@@ -59,8 +64,11 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.green,
                           iconSize: 70,
                           onPressed: () {
-                           Navigator.of(context)
-                          .pushReplacementNamed(AccountScreen.routeName);
+                          //  Navigator.of(context)
+                          // .pushReplacementNamed(AccountScreen.routeName);
+                           Navigator.push(context,
+                           MaterialPageRoute(builder: (context) => ProfilePage()),
+                           );
                           },
                         ),
                     ),
@@ -76,41 +84,60 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(0,0,0,50,),
-                    child: Text(
-                      FirebaseAuth.instance.currentUser!.email.toString(),
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                  Flexible(
+                  child: Center(
+                  child: RichText(
+                  text: TextSpan(
+                    text: 'What are you ',
+                    style: DefaultTextStyle.of(context).style,
+                    children: const <TextSpan>[
+                      TextSpan(text: 'looking', style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: ' for?'),
+                    ],
                   ),
-                  Container(
-                      child: ElevatedButton(
-                          child: const Text('Logout',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                              )),
-                          onPressed: () async {
-                            try {
-                              await FirebaseAuth.instance
-                                  .signOut()
-                                  .then((value) {
-                                Navigator.of(context).pushReplacementNamed(
-                                    LoginScreen.routeName);
-                              });
-                            } catch (e) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content: Text(e.toString()),
-                              ));
-                            }
-                          })),
-                ],
+                ),
+                ),
+                ),
+          Flexible(
+            // child: Align(
+            // alignment: Alignment.bottomCenter,
+            child: ElevatedButton(
+              child: const Text('Roomate',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                )
               ),
+              onPressed: () async {
+                Navigator.push(context,
+                           MaterialPageRoute(builder: (context) => RoomyPage()),
+                           );
+
+              }
+            )
+          //),
+          ),
+          Flexible(
+            // child: Align(
+            // alignment: Alignment.bottomCenter,
+            child: ElevatedButton(
+              child: const Text('Accomodation',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                )
+              ),
+              onPressed: () async {
+                Navigator.push(context,
+                           MaterialPageRoute(builder: (context) => AccomPage()),
+                           );
+
+              }
+            )
+          //),
+          ),
+        ],
+      ),
             );
           }
         ),

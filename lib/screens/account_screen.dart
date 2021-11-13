@@ -16,6 +16,20 @@ class AccountScreen extends StatelessWidget {
             return Center(
               child: Column(
                 children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: const Icon(Icons.arrow_back_rounded),
+                          color: Colors.green,
+                          iconSize: 50,
+                        onPressed: () {
+                          Navigator.pop(context);
+                          },
+                        ),
+                      ),
+                    ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(0,0,0,50,),
                     child: Text(
@@ -26,7 +40,10 @@ class AccountScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
+                  
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                    
                       child: ElevatedButton(
                           child: const Text('Logout',
                               style: TextStyle(
@@ -50,7 +67,7 @@ class AccountScreen extends StatelessWidget {
                             }
                           }
                       )
-                    ),
+                  ),  
                 ],
               ),
             );
