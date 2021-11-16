@@ -20,6 +20,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black45,
       body: FutureBuilder(
         future: _firebaseApp,
         builder: (context,snapshot) {
@@ -32,7 +33,7 @@ class SignupScreen extends StatelessWidget {
                 child: Center(
                   child: Text('Create an Account',
                   style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.white,
                     fontSize: 60,
                     fontWeight: FontWeight.bold
                     ),
@@ -59,7 +60,7 @@ class SignupScreen extends StatelessWidget {
                              child: Icon(
                                Icons.tag_faces,
                                size: 26,
-                               color: kGreen,
+                               color: kMoon,
                               ),
                            ),
                          hintText: 'Name',
@@ -93,7 +94,7 @@ class SignupScreen extends StatelessWidget {
                              child: Icon(
                                Icons.account_balance ,
                                size: 26,
-                               color: kGreen,
+                               color: kMoon,
                               ),
                            ),
                          hintText: 'City',
@@ -127,7 +128,7 @@ class SignupScreen extends StatelessWidget {
                              child: Icon(
                                Icons.alternate_email,
                                size: 26,
-                               color: kGreen,
+                               color: kMoon,
                               ),
                            ),
                          hintText: 'Email',
@@ -162,7 +163,7 @@ class SignupScreen extends StatelessWidget {
                              child: Icon(
                                Icons.lock,
                                size: 26,
-                               color: kGreen,
+                               color: kMoon,
                               ),
                            ),
                          hintText: 'Password',

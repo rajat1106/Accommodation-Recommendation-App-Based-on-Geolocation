@@ -17,19 +17,12 @@ class LoginScreen extends StatelessWidget{
     return Stack(
       children: [
         Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.black45,
           body:Column(
-            children:[
-              const Flexible(
-                flex: 4,
-                child: Center(
-                  child: Icon(
-                    Icons.account_circle ,
-                    size: 100,
-                    color: kGreen,
-                  ),
-                ),
-                fit: FlexFit.loose,
+            children:[	
+              Image.asset(
+                  'images/splash.png',
+                  scale: 2
               ),
               const Flexible(
                 flex: 6,
@@ -64,7 +57,7 @@ class LoginScreen extends StatelessWidget{
                              child: Icon(
                                Icons.alternate_email,
                                size: 26,
-                               color: kGreen,
+                               color: kMoon,
                               ),
                            ),
                          hintText: 'Email',
@@ -99,7 +92,7 @@ class LoginScreen extends StatelessWidget{
                              child: Icon(
                                Icons.lock,
                                size: 26,
-                               color: kGreen,
+                               color: kMoon,
                               ),
                            ),
                          hintText: 'Password',
