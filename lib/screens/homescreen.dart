@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black45,
       body: FutureBuilder(
           future: _firebaseApp,
           builder: (context, snapshot) {
@@ -61,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                         child: IconButton(
                           icon: const Icon(Icons.account_circle),
-                          color: Colors.green,
+                          color: Colors.indigo[900],
                           iconSize: 70,
                           onPressed: () {
                           //  Navigator.of(context)
@@ -77,27 +78,39 @@ class HomeScreen extends StatelessWidget {
                     child: Center(
                       child: Text('Welcome Back',
                         style: TextStyle(
-                          color: Colors.green,
+                          color: Colors.white,
                           fontSize: 60,
                           fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
                   ),
-                  Flexible(
-                  child: Center(
-                  child: RichText(
-                  text: TextSpan(
-                    text: 'What are you ',
-                    style: DefaultTextStyle.of(context).style,
-                    children: const <TextSpan>[
-                      TextSpan(text: 'looking', style: TextStyle(fontWeight: FontWeight.bold)),
-                      TextSpan(text: ' for?'),
-                    ],
+                  const Flexible(
+                    child: Center(
+                      child: Text('What are you looking for?',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,                        ),
+                      ),
+                    ),
                   ),
-                ),
-                ),
-                ),
+                //   Flexible(
+                //   child: Center(
+                //   child: RichText(
+                  
+                //   text: TextSpan(
+                //     text: 'What are you ',
+                //     style: DefaultTextStyle.of(context).style,
+                //     color: Colors.white,
+                //     children: const <TextSpan>[
+                //       TextSpan(text: 'looking', style: TextStyle(fontWeight: FontWeight.bold)),
+                //       TextSpan(text: ' for?'),
+                //     ],
+                //   ),
+                // ),
+                // ),
+                // ),
           Flexible(
             // child: Align(
             // alignment: Alignment.bottomCenter,

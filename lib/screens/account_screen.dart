@@ -10,6 +10,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: FutureBuilder(
           future: _firebaseApp,
           builder: (context, snapshot) {
@@ -22,7 +23,7 @@ class AccountScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back_rounded),
-                          color: Colors.green,
+                          color: Colors.white,
                           iconSize: 50,
                         onPressed: () {
                           Navigator.pop(context);
@@ -37,6 +38,7 @@ class AccountScreen extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white
                       ),
                     ),
                   ),

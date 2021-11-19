@@ -22,6 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
       appBar: buildAppBar(context),
+      backgroundColor: Colors.black,
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
@@ -29,16 +30,16 @@ class _ProfilePageState extends State<ProfilePage> {
           //   imagePath: user.imagePath,
           //   onClicked: () async {},
           // ),
-          Container(
-                    padding: const EdgeInsets.fromLTRB(0,0,0,50,),
-                    child: Text(
-                      FirebaseAuth.instance.currentUser!.displayName.toString(),
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+          // Container(
+          //           padding: const EdgeInsets.fromLTRB(0,0,0,50,),
+          //           child: Text(
+          //             FirebaseAuth.instance.currentUser!.displayName.toString(),
+          //             style: const TextStyle(
+          //               fontSize: 20,
+          //               fontWeight: FontWeight.bold,
+          //             ),
+          //           ),
+          //         ),
           const SizedBox(height: 24),
           Container(
                     padding: const EdgeInsets.fromLTRB(0,0,0,50,),
@@ -47,6 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white
                       ),
                     ),
                   ),
