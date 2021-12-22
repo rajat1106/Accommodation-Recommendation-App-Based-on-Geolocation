@@ -53,6 +53,21 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
           const SizedBox(height: 24),
+          Flexible(
+            child: Align(
+            // alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                child: const Text('Enable for roomate',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                )
+              ),
+                onPressed: () async {
+                }
+                )
+            ),
+          ),
           const SizedBox(height: 48),
           Align(
             alignment: Alignment.bottomCenter,
@@ -87,36 +102,36 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget buildName(User1 user) => Column(
-        children: [
-          Text(
-            user.name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            user.email,
-            style: TextStyle(color: Colors.grey),
-          )
-        ],
-      );
+  // Widget buildName(User1 user) => Column(
+  //       children: [
+  //         Text(
+  //           user.name,
+  //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+  //         ),
+  //         const SizedBox(height: 4),
+  //         Text(
+  //           user.email,
+  //           style: TextStyle(color: Colors.grey),
+  //         )
+  //       ],
+  //     );
 
-  Widget buildAbout(User1 user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 48),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'About',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            // Text(
-            //   user.about,
-            //   style: TextStyle(fontSize: 16, height: 1.4),
-            // ),
-          ],
-        ),
-      );
+  // Widget buildAbout(User1 user) => Container(
+  //       padding: EdgeInsets.symmetric(horizontal: 48),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Text(
+  //             'About',
+  //             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+  //           ),
+  //           const SizedBox(height: 16),
+  //           // Text(
+  //           //   user.about,
+  //           //   style: TextStyle(fontSize: 16, height: 1.4),
+  //           // ),
+  //         ],
+  //       ),
+  //     );
 
 }

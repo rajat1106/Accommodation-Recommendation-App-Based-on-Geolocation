@@ -1,3 +1,18 @@
+import "package:flutter/material.dart";
+
+class EditProfile extends StatefulWidget {
+  @override
+  _EditProfileState createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  @override
+  Widget build(BuildContext context) {
+    return Text('Edit Profile');
+  }
+}
+
+
 // import 'package:cached_network_image/cached_network_image.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import "package:flutter/material.dart";
