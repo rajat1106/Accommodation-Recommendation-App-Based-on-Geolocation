@@ -14,6 +14,7 @@ class _UserInformationState extends State<UserInformation> {
   String name = "";
   String email = "";
   String city = "";
+  String bio = "";
 
   var firebaseUser = FirebaseAuth.instance.currentUser;
 
@@ -40,8 +41,10 @@ class _UserInformationState extends State<UserInformation> {
                   name = value.data()!['Name'];
                   email = value.data()!['email'];
                   city = value.data()!['City'];
+                  bio = value.data()!['Bio'];
                   setState(() {
                     retrival = true;
+                    
                   });
                 });
               },
