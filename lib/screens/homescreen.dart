@@ -4,7 +4,6 @@ import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sdp_v2/screens/account_screen.dart';
 import 'package:sdp_v2/screens/roomate.dart';
 import 'accomodation.dart';
 import 'login.dart';
@@ -15,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   static const routeName = '/home';
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -177,6 +177,11 @@ class HomeScreen extends StatelessWidget {
                           })
                       //),
                       ),
+                      Flexible(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset('images/skyline1.png')),
+            ),
                 ],
               ),
             );

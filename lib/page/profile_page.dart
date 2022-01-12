@@ -37,21 +37,22 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   //QueryDocumentSnapshot d=FirebaseFirestore.instance.widget.doc.doc(FirebaseAuth.instance.currentUser!.uid).get();
+  var x;
   @override
   void initState() {
-    late QueryDocumentSnapshot d;
+     var d;
     getuser() async {
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('Users')
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .get()
-          .then((value) => d = value as QueryDocumentSnapshot<Object?>);
-    }
+          .then((value) => d = value);
+      print(d);}
     final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
     getuser();
-    _userbio = TextEditingController(text: d.get('Bio'));
+   _userbio = TextEditingController(text: d.get('Bio'));
   }
-
+  late bool switchListTileValue;
   @override
   Widget build(BuildContext context) {
 //     update() async {
@@ -212,6 +213,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       ));
                     }
                   })),
+                   SwitchListTile(
+              value: switchListTileValue ??= true,
+              onChanged: (newValue) =>
+                  setState(() => switchListTileValue = newValue),
+              title: Text(
+                'Enable for Roomate',     
+              ),
+              subtitle: Text(
+                'looking for a roomate',
+              ),
+              tileColor: Color(0xFFF5F5F5),
+              dense: false,
+              controlAffinity: ListTileControlAffinity.trailing,
+            ), 
         ],
       ),
     );
