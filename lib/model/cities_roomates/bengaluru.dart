@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
-class BangPage extends StatefulWidget {
+class Bang1Page extends StatefulWidget {
   static const routeName = '/bengaluru';
   @override
-  _BangPageState createState() => _BangPageState();
+  _Bang1PageState createState() => _Bang1PageState();
 }
 
-class _BangPageState extends State<BangPage> {
+class _Bang1PageState extends State<Bang1Page> {
   @override
   Widget build(BuildContext context) {
     final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();

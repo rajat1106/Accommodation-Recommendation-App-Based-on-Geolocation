@@ -1,6 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sdp_v2/model/cities_roomates/bengaluru.dart';
+import 'package:sdp_v2/model/cities_roomates/delhi.dart';
+import 'package:sdp_v2/model/cities_roomates/mumbai.dart';
+import 'package:sdp_v2/model/cities_roomates/nashik.dart';
+import 'package:sdp_v2/model/cities_roomates/pune.dart';
 import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
@@ -29,26 +34,146 @@ class _RoomyPageState extends State<RoomyPage> {
                 context,
                 MaterialPageRoute(builder: (context) => ProfilePage()),
               );
-              // FirebaseFirestore.instance.collection('Users').get().then((value) => Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => ProfilePage(doc: value),
-              //     )));
             },
           ),
         ),
-        const Flexible(
-          child: Center(
-            child: Text(
-              'Welcome Back',
-              style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 60,
-                  fontWeight: FontWeight.bold),
-            ),
+        Expanded(
+          flex: 1,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 20,
+              ),
+              const Center(
+                child: Text(
+                  'Select your City',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Center(
+                child: Icon(
+                  Icons.location_on_rounded,
+                  size: 26,
+                  color: Colors.indigo[900],
+                ),
+              ),
+            ],
           ),
-        )
-      ]),
+        ),
+        Expanded(
+          child: Column(
+            children: [      
+        Row(crossAxisAlignment: CrossAxisAlignment.center, 
+        children: [
+          SizedBox(width: 50,),
+          Center(
+            child: new ButtonBar(
+              children: <Widget>[
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue[400],
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                    )
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Nashik1Page()),
+                    );
+                  },
+                  child: const Text('Nashik'),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue[400],
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Pune1Page()),
+                    );
+                  },
+                  child: const Text('Pune'),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                   primary: Colors.blue[400],
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                    )
+                  ),
+                  child: const Text('Mumbai'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Mumbai1Page()),
+                    );
+                  },
+                ),
+              ],
+            ),
+          )
+        ]),
+        SizedBox(height: 20,),
+        Row(crossAxisAlignment: CrossAxisAlignment.center, 
+        children: [
+          SizedBox(width: 90,),
+          Center(
+            child: new ButtonBar(children: <Widget>[
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[400],
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                    )
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Bang1Page()),
+                  );
+                },
+                child: const Text('Bengaluru'),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[400],
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                    )
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Delhi1Page()),
+                  );
+                },
+                child: const Text('Delhi'),
+              ),
+            ]),
+          ),
+        ]),
+        Flexible(
+          child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset('images/skyline1.png')),
+        ),
+      ])
+      )
+      ]
+      ),
     );
   }
 }

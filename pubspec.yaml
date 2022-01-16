@@ -50,6 +50,8 @@ dependencies:
   #toggle button
   toggle_switch: ^1.3.0
   font_awesome_flutter: ^9.2.0
+  fluster: ^1.1.0
+  google_maps_flutter: 0.5.19+2
   
 dev_dependencies:
   flutter_test:
@@ -83,7 +85,12 @@ flutter:
   - images/splash.png
   - images/skyline1.png
   - images/skyline2.png
-
+  - images/mumbai_icon.png
+  - images/Pune_icon.webp
+  - images/nashik_icon.png
+  - images/banglluru_icon.png
+  - images/delhi_icon.png
+  - images/girl.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

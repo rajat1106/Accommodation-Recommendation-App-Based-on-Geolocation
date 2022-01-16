@@ -14,7 +14,6 @@ class HomeScreen extends StatelessWidget {
   static const routeName = '/home';
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,8 +89,21 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Flexible(
+                  Expanded(
                     child: Center(
+                    child: Column(
+                    children:[
+                  Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'images/girl.png',
+                        height: 110,
+                        width: 110,
+                        fit: BoxFit.fitWidth,
+                      )),
+                  const Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                       child: Text(
                         'What are you looking for?',
                         style: TextStyle(
@@ -102,6 +114,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                    ]))),
                   Align(
                       alignment: Alignment.bottomCenter,
                       child: ElevatedButton(
@@ -160,8 +173,7 @@ class HomeScreen extends StatelessWidget {
                       //),
                       ),
                   Flexible(
-                      // child: Align(
-                      // alignment: Alignment.bottomCenter,
+                     
                       child: ElevatedButton(
                           child: const Text('Accomodation',
                               style: TextStyle(
@@ -175,13 +187,13 @@ class HomeScreen extends StatelessWidget {
                                   builder: (context) => AccomPage()),
                             );
                           })
-                      //),
+      
                       ),
-                      Flexible(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Image.asset('images/skyline1.png')),
-            ),
+                  
+                    Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Image.asset('images/skyline1.png')),
+                  
                 ],
               ),
             );
