@@ -14,101 +14,497 @@ class _BangPageState extends State<BangPage> {
   @override
   Widget build(BuildContext context) {
     final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
-    String? dropdownvalue = 'Mumbai';
-    // List of items in our dropdown menu
-    var items = [
-      'Mumbai',
-      'Pune',
-      'Nashik',
-      'New Delhi',
-      'Bengaluru',
-    ];
-    return Scaffold(
+     return Scaffold(
       backgroundColor: Colors.black45,
-      body: Center(
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                icon: const Icon(Icons.account_circle),
-                color: Colors.indigo[900],
-                iconSize: 70,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()),
-                  );
-                },
+      body: const MyStatelessWidget(),
+    );
+  }
+}
+
+class _ArticleDescription extends StatelessWidget {
+  const _ArticleDescription({
+    Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.author,
+    required this.publishDate,
+  }) : super(key: key);
+
+  final String title;
+  final String subtitle;
+  final String author;
+  final String publishDate;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
+              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              Text(
+                subtitle,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 12.0,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              
+              Expanded(
+                  child: Row(
+                children: [
+                  Text(
+                author,
+                style: const TextStyle(
+                  fontSize: 22.0,
+                  color: Colors.blueAccent,
+                ),
+              ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.directions),
+                    color: Colors.blue,
+                  )
+                ],
+              )),
+              Text(
+                    '$publishDate',
+                    style: const TextStyle(
+                      fontSize: 12.0,
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class CustomListItemTwo extends StatelessWidget {
+  CustomListItemTwo({
+    Key? key,
+    required this.thumbnail,
+    required this.title,
+    required this.subtitle,
+    required this.author,
+    required this.publishDate,
+  }) : super(key: key);
+
+  final Widget thumbnail;
+  final String title;
+  final String subtitle;
+  final String author;
+  final String publishDate;
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: SizedBox(
+        height: 100,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 1.0,
+              child: thumbnail,
             ),
             Expanded(
-              // added Expanded widget
-              child: Row(
-                children: [
-                  Center(
-                    child: Icon(
-                      Icons.location_on_rounded,
-                      size: 26,
-                      color: Colors.indigo[900],
-                    ),
-                  ),
-                  Center(
-                    child: DropdownButton(
-                      // Initial Value
-                      value: dropdownvalue,
-                      // Down Arrow Icon
-
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      style: TextStyle(
-                          color: Colors.indigo[900],
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      // Array list of items
-                      items: items.map((String items) {
-                        return DropdownMenuItem(
-                          value: items,
-                          child: Text(items),
-                        );
-                      }).toList(),
-                      // After selecting the desired option,it will
-                      // change button value to selected value
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownvalue = newValue;
-                          if (dropdownvalue == 'Mumbai') {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProfilePage()),
-                            );
-                          }
-                        });
-                      },
-                    ),
-                    
-                  ),
-                  const Center(
-              child: Text(
-                'This is mumbai',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 2.0, 0.0),
+                child: _ArticleDescription(
+                  title: title,
+                  subtitle: subtitle,
+                  author: author,
+                  publishDate: publishDate,
+                ),
               ),
-            ),
-                ],
-              ),
-            ),
-            Flexible(
-              child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image.asset('images/skyline1.png')),
-            ),
+            )
           ],
         ),
       ),
+    );
+  }
+}
+
+class MyStatelessWidget extends StatelessWidget {
+  const MyStatelessWidget({Key? key}) : super(key: key);
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: const EdgeInsets.all(10.0),
+      children: <Widget>[
+        Align(
+          alignment: Alignment.topRight,
+          child: IconButton(
+            icon: const Icon(Icons.account_circle),
+            color: Colors.indigo[900],
+            iconSize: 70,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+            },
+          ),
+        ),
+        Align(alignment: Alignment.topLeft,
+        child:Text('Bengaluru',style:TextStyle(  
+              fontSize: 10,  
+              color: Colors.blue,  
+              fontStyle: FontStyle.normal, 
+              shadows: [  
+                Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)  
+              ]  
+            ),  )
+        ),
+        Expanded(child: Row(
+          children: [
+            Text(  
+            "Accomodation for: ",  
+            style: TextStyle(  
+              fontSize: 20,  
+              color: Colors.white,  
+              fontStyle: FontStyle.normal, 
+              shadows: [  
+                Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)  
+              ]  
+            ),  
+          ),  SizedBox(width: 5,),
+            TextButton.icon(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(color: Colors.white),
+                backgroundColor: Colors.blueAccent,
+                shape:RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24.0),
+                ), 
+              ),
+              onPressed: (){final screenHeight = MediaQuery.of(context).size.height;},
+              icon: Icon(Icons.male_outlined),
+              label: Text('Boys',),
+        ),
+        SizedBox(width: 5,),
+            TextButton.icon(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(color: Colors.white),
+                backgroundColor: Colors.pink,
+                shape:RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24.0),
+                ), 
+              ),
+              onPressed: (){// Get the height you want to scroll to. 
+              final screenHeight = MediaQuery.of(context).size.height*0.5;},
+              icon: Icon(Icons.female),
+              label: Text('Girls',),
+        ),
+          ],
+        )
+        ),
+         Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'SAFE Student Housing -Student Accommodation For Education ',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'Seva Niketan Boys Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'Ganga Niwas Boys Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'Bright Youth Boys Accommodation - Tushar Bindu Building',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'Your Space Boys Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'PG in Andheri West',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'Jankidevi Bilasrai Bubna Boys Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.blue),
+          ),
+          title: 'Wish Boys Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for boys',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'MJs PG for Girls',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+       CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'Mehta Girls Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+       CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'Student Housing Girls Hostel in Mumbai',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+       CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'M.D.K Ladies Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+       CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'Sisters Of The Good Shepherd',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+       CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'Skyhomes Girls Hostel',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+       CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'Bright Youth Girls Accommodation',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        CustomListItemTwo(
+          thumbnail: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/banglluru_icon.png'),
+                  fit: BoxFit.fill,
+                ),
+                color: Colors.pink),
+          ),
+          title: 'Veena Shah Girls’ Paying Guest',
+          subtitle: 'Mess avaiable',
+          author: 'Open',
+          publishDate: 'for girls',
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+       
+
+      ],
     );
   }
 }

@@ -75,7 +75,7 @@ class _AccomPageState extends State<AccomPage> {
               children: <Widget>[
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue[400],
+                    primary: Colors.blue[600],
                     textStyle: TextStyle(
                       fontSize: 20,
                     )
@@ -90,7 +90,7 @@ class _AccomPageState extends State<AccomPage> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue[400],
+                    primary: Colors.blue[600],
                     textStyle: TextStyle(
                       fontSize: 20,
                     ),
@@ -105,7 +105,7 @@ class _AccomPageState extends State<AccomPage> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                   primary: Colors.blue[400],
+                   primary: Colors.blue[600],
                     textStyle: TextStyle(
                       fontSize: 20,
                     )
@@ -130,7 +130,7 @@ class _AccomPageState extends State<AccomPage> {
             child: new ButtonBar(children: <Widget>[
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue[400],
+                  primary: Colors.blue[600],
                     textStyle: TextStyle(
                       fontSize: 20,
                     )
@@ -145,7 +145,7 @@ class _AccomPageState extends State<AccomPage> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue[400],
+                  primary: Colors.blue[600],
                     textStyle: TextStyle(
                       fontSize: 20,
                     )
@@ -156,7 +156,7 @@ class _AccomPageState extends State<AccomPage> {
                     MaterialPageRoute(builder: (context) => DelhiPage()),
                   );
                 },
-                child: const Text('Delhi'),
+                child: const Text('New Delhi'),
               ),
             ]),
           ),

@@ -86,11 +86,12 @@ flutter:
   - images/skyline1.png
   - images/skyline2.png
   - images/mumbai_icon.png
-  - images/Pune_icon.webp
+  - images/pune_icon.webp
   - images/nashik_icon.png
   - images/banglluru_icon.png
   - images/delhi_icon.png
   - images/girl.png
+  - images/mumbai_boys.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
