@@ -92,6 +92,15 @@ flutter:
   - images/delhi_icon.png
   - images/girl.png
   - images/mumbai_boys.png
+  - images/mumbai_girls.png
+  - images/pune_boys.png
+  - images/pune_girls.png
+  - images/bengaluru_boys.png
+  - images/bengaluru_girls.png
+  - images/delhi_boys.png
+  - images/delhi_girls.png
+  - images/nashik_boys.png
+  - images/nashik_girls.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

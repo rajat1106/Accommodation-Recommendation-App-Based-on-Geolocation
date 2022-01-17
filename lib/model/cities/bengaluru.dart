@@ -230,6 +230,21 @@ class MyStatelessWidget extends StatelessWidget {
          Divider(
           color: Colors.white,
         ),
+        Container(
+      height: 350.0,
+      width: 200.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'images/bengaluru_boys.png'),
+          
+        ),
+        shape: BoxShape.rectangle,
+      ),
+    ),
+         Divider(
+          color: Colors.white,
+        ),
         CustomListItemTwo(
           thumbnail: Container(
             decoration: const BoxDecoration(
@@ -364,6 +379,21 @@ class MyStatelessWidget extends StatelessWidget {
           publishDate: 'for boys',
         ),
         Divider(
+          color: Colors.white,
+        ),
+        Container(
+      height: 350.0,
+      width: 200.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'images/bengaluru_girls.png'),
+          
+        ),
+        shape: BoxShape.rectangle,
+      ),
+    ),
+         Divider(
           color: Colors.white,
         ),
         CustomListItemTwo(

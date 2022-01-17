@@ -227,6 +227,21 @@ class MyStatelessWidget extends StatelessWidget {
           ],
         )
         ),
+        Divider(
+          color: Colors.white,
+        ),
+        Container(
+      height: 350.0,
+      width: 200.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'images/pune_boys.png'),
+          
+        ),
+        shape: BoxShape.rectangle,
+      ),
+    ),
          Divider(
           color: Colors.white,
         ),
@@ -363,7 +378,22 @@ class MyStatelessWidget extends StatelessWidget {
           author: 'Open',
           publishDate: 'for boys',
         ),
-        Divider(
+       Divider(
+          color: Colors.white,
+        ),
+        Container(
+      height: 350.0,
+      width: 200.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'images/pune_girls.png'),
+          
+        ),
+        shape: BoxShape.rectangle,
+      ),
+    ),
+         Divider(
           color: Colors.white,
         ),
         CustomListItemTwo(
