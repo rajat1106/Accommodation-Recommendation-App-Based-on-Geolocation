@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 class MumbaiPage extends StatefulWidget {
   static const routeName = '/mumbai';
@@ -84,7 +85,8 @@ class _ArticleDescription extends StatelessWidget {
                 ),
               ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => MapsLauncher.launchCoordinates(
+                    19.105208526101674, 72.83725531162617),
                     icon: Icon(Icons.directions),
                     color: Colors.blue,
                   )
