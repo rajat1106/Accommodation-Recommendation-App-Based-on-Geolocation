@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/model/cities_roomates/bengaluru.dart';
-import 'package:sdp_v2/model/cities_roomates/delhi.dart';
-import 'package:sdp_v2/model/cities_roomates/mumbai.dart';
-import 'package:sdp_v2/model/cities_roomates/nashik.dart';
-import 'package:sdp_v2/model/cities_roomates/pune.dart';
+import 'package:sdp_v2/model/cities_roomates-boys/bengaluru.dart';
+import 'package:sdp_v2/model/cities_roomates-boys/delhi.dart';
+import 'package:sdp_v2/model/cities_roomates-boys/mumbai.dart';
+import 'package:sdp_v2/model/cities_roomates-boys/nashik.dart';
+import 'package:sdp_v2/model/cities_roomates-boys/pune.dart';
 import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
@@ -129,7 +129,7 @@ class _RoomyPageState extends State<RoomyPage> {
         SizedBox(height: 20,),
         Row(crossAxisAlignment: CrossAxisAlignment.center, 
         children: [
-          SizedBox(width: 90,),
+          SizedBox(width: 80,),
           Center(
             child: new ButtonBar(children: <Widget>[
               ElevatedButton(

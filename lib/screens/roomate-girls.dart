@@ -1,70 +1,75 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/model/cities/bengaluru.dart';
-import 'package:sdp_v2/model/cities/delhi.dart';
-import 'package:sdp_v2/model/cities/mumbai.dart';
-import 'package:sdp_v2/model/cities/nashik.dart';
-import 'package:sdp_v2/model/cities/pune.dart';
+import 'package:sdp_v2/model/cities_roomates-boys/pune.dart';
+import 'package:sdp_v2/model/cities_roomates-girls/bengaluru.dart';
+import 'package:sdp_v2/model/cities_roomates-girls/delhi.dart';
+import 'package:sdp_v2/model/cities_roomates-girls/mumbai.dart';
+import 'package:sdp_v2/model/cities_roomates-girls/nashik.dart';
+import 'package:sdp_v2/model/cities_roomates-girls/pune.dart';
 import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
-class AccomPage extends StatefulWidget {
-  static const routeName = '/accomodation';
+class Roomy2Page extends StatefulWidget {
+  static const routeName = '/rommate';
   @override
-  _AccomPageState createState() => _AccomPageState();
+  _Roomy2PageState createState() => _Roomy2PageState();
 }
 
-class _AccomPageState extends State<AccomPage> {
+class _Roomy2PageState extends State<Roomy2Page> {
   @override
   Widget build(BuildContext context) {
     final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
-    String? dropdownvalue = 'Mumbai';
-    // List of items in our dropdown menu
-    
-    var children2 = [
-      Align(
-        alignment: Alignment.topRight,
-        child: IconButton(
-          icon: const Icon(Icons.account_circle),
-          color: Colors.indigo[900],
-          iconSize: 70,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProfilePage()),
-            );
-          },
+
+    return Scaffold(
+      backgroundColor: Colors.black45,
+      body: Column(children: [
+        Align(
+          alignment: Alignment.topRight,
+          child: IconButton(
+            icon: const Icon(Icons.account_circle),
+            color: Colors.indigo[900],
+            iconSize: 70,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+            },
+          ),
         ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(width: 20,),
-            const Center(
-              child: Text(
-                'Select your City',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
+        Expanded(
+          flex: 1,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 20,
               ),
-            ),
-            SizedBox(width: 20,),
-            Center(
-              child: Icon(
-                Icons.location_on_rounded,
-                size: 26,
-                color: Colors.indigo[900],
+              const Center(
+                child: Text(
+                  'Select your City',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-          ],
+              SizedBox(
+                width: 10,
+              ),
+              Center(
+                child: Icon(
+                  Icons.location_on_rounded,
+                  size: 26,
+                  color: Colors.indigo[900],
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      Expanded(
+        Expanded(
           child: Column(
             children: [      
         Row(crossAxisAlignment: CrossAxisAlignment.center, 
@@ -83,7 +88,7 @@ class _AccomPageState extends State<AccomPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => NashikPage()),
+                      MaterialPageRoute(builder: (context) => Nashik2Page()),
                     );
                   },
                   child: const Text('Nashik'),
@@ -98,7 +103,7 @@ class _AccomPageState extends State<AccomPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => PunePage()),
+                      MaterialPageRoute(builder: (context) => Pune2Page()),
                     );
                   },
                   child: const Text('Pune'),
@@ -114,7 +119,7 @@ class _AccomPageState extends State<AccomPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MumbaiPage()),
+                      MaterialPageRoute(builder: (context) => Mumbai2Page()),
                     );
                   },
                 ),
@@ -138,7 +143,7 @@ class _AccomPageState extends State<AccomPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => BangPage()),
+                    MaterialPageRoute(builder: (context) => Bang2Page()),
                   );
                 },
                 child: const Text('Bengaluru'),
@@ -153,7 +158,7 @@ class _AccomPageState extends State<AccomPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DelhiPage()),
+                    MaterialPageRoute(builder: (context) => Delhi2Page()),
                   );
                 },
                 child: const Text('New Delhi'),
@@ -168,11 +173,8 @@ class _AccomPageState extends State<AccomPage> {
         ),
       ])
       )
-    ];
-    return Scaffold(
-        backgroundColor: Colors.black45,
-        body: Center
-        (child: Column(
-          children: children2)));
+      ]
+      ),
+    );
   }
 }

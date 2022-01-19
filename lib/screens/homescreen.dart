@@ -4,7 +4,7 @@ import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sdp_v2/screens/roomate.dart';
+import 'package:sdp_v2/screens/roomate_boys.dart';
 import 'accomodation.dart';
 import 'login.dart';
 

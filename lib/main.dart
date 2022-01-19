@@ -1,6 +1,6 @@
 import 'package:sdp_v2/pallaete.dart';
 import 'package:sdp_v2/screens/accomodation.dart';
-import 'package:sdp_v2/screens/roomate.dart';
+import 'package:sdp_v2/screens/roomate_boys.dart';
 import 'package:sdp_v2/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';

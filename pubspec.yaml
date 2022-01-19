@@ -104,6 +104,8 @@ flutter:
   - images/nashik_girls.png
   - images/avatar_boy.png
   - images/avatar_girl.png
+  - images/gender_girls.jpg
+  - images/gender_boys.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
