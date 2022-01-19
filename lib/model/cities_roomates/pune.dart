@@ -10,105 +10,114 @@ class Pune1Page extends StatefulWidget {
   _Pune1PageState createState() => _Pune1PageState();
 }
 
+class Person {
+  String name;
+  String profileImg;
+  String bio;
+
+  Person({
+  required this.name,
+  required this.profileImg,
+  required this.bio
+  });
+}
+
 class _Pune1PageState extends State<Pune1Page> {
   @override
+  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
   Widget build(BuildContext context) {
-    final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
-    String? dropdownvalue = 'Mumbai';
-    // List of items in our dropdown menu
-    var items = [
-      'Mumbai',
-      'Pune',
-      'Nashik',
-      'New Delhi',
-      'Bengaluru',
-    ];
     return Scaffold(
-      backgroundColor: Colors.black45,
-      body: Center(
+      backgroundColor: Colors.black,
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
         child: Column(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                icon: const Icon(Icons.account_circle),
-                color: Colors.indigo[900],
-                iconSize: 70,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()),
-                  );
-                },
-              ),
-            ),
-            Expanded(
-              // added Expanded widget
-              child: Row(
-                children: [
-                  Center(
-                    child: Icon(
-                      Icons.location_on_rounded,
-                      size: 26,
-                      color: Colors.indigo[900],
-                    ),
-                  ),
-                  Center(
-                    child: DropdownButton(
-                      // Initial Value
-                      value: dropdownvalue,
-                      // Down Arrow Icon
-
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      style: TextStyle(
-                          color: Colors.indigo[900],
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      // Array list of items
-                      items: items.map((String items) {
-                        return DropdownMenuItem(
-                          value: items,
-                          child: Text(items),
-                        );
-                      }).toList(),
-                      // After selecting the desired option,it will
-                      // change button value to selected value
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownvalue = newValue;
-                          if (dropdownvalue == 'Mumbai') {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProfilePage()),
-                            );
-                          }
-                        });
-                      },
-                    ),
-                    
-                  ),
-                  const Center(
-              child: Text(
-                'This is mumbai',
-                textAlign: TextAlign.center,
-                style: TextStyle(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+               IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
+                    onPressed: () => Navigator.of(context).pop(),
+                              ), 
+                Text('Roomates',
+                  style: TextStyle (
                     color: Colors.white,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold),
-              ),
+                    fontSize: 25
+                  ),
+                ),
+                IconButton(
+            icon: const Icon(Icons.account_circle),
+            color: Colors.indigo[900],
+            iconSize: 70,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+            },
+          ),
+              ],
             ),
-                ],
-              ),
-            ),
-            Flexible(
-              child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image.asset('images/skyline1.png')),
-            ),
+            Column(
+              children: persons.map((p) {
+                return personDetailCard(p);
+              }).toList()
+            )
           ],
         ),
       ),
     );
   }
-}
+   
+
+    List<Person> persons = [
+     Person(name: 'Rajat Harne', profileImg: 'img/avatar_boy.png', bio: "Software Developer"),
+     Person(name: 'Andy Smith', profileImg: 'img/pic-2.png', bio: "UI Designer"),
+     Person(name: 'Creepy Story', profileImg: 'img/pic-3.png', bio: "Software Tester")
+  ];
+
+   Widget personDetailCard(Person) {
+     return Padding(
+       padding: const EdgeInsets.all(10.0),
+       child: Card(
+         color: Colors.grey[800],
+         child: Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: Row(
+             children: <Widget>[
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Container(
+                     width: 50.0,
+                     height: 50.0,
+                     decoration: new BoxDecoration(
+                         shape: BoxShape.circle,
+                         image: new DecorationImage(
+                             fit: BoxFit.cover,
+                             image: AssetImage(Person.profileImg)
+                         )
+                     )),
+               ),
+               Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: <Widget>[
+                   Text(Person.name,
+                     style: TextStyle (
+                         color: Colors.white,
+                         fontSize: 18
+                     ),
+                   ),
+                   Text(Person.bio,
+                     style: TextStyle (
+                         color: Colors.white,
+                         fontSize: 12
+                     ),
+                   )
+                 ],
+               )
+             ],
+           ),
+         ),
+       ),
+     );
+    }
+  }

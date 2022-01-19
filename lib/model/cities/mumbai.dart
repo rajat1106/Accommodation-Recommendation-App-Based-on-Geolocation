@@ -73,32 +73,31 @@ class _ArticleDescription extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              
               Expanded(
                   child: Row(
                 children: [
                   Text(
-                author,
-                style: const TextStyle(
-                  fontSize: 22.0,
-                  color: Colors.blueAccent,
-                ),
-              ),
+                    author,
+                    style: const TextStyle(
+                      fontSize: 22.0,
+                      color: Colors.blueAccent,
+                    ),
+                  ),
                   IconButton(
                     onPressed: () => MapsLauncher.launchCoordinates(
-                    19.105208526101674, 72.83725531162617),
+                        19.105208526101674, 72.83725531162617),
                     icon: Icon(Icons.directions),
                     color: Colors.blue,
                   )
                 ],
               )),
               Text(
-                    '$publishDate',
-                    style: const TextStyle(
-                      fontSize: 12.0,
-                      color: Colors.blueGrey,
-                    ),
-                  ),
+                '$publishDate',
+                style: const TextStyle(
+                  fontSize: 12.0,
+                  color: Colors.blueGrey,
+                ),
+              ),
             ],
           ),
         ),
@@ -122,7 +121,6 @@ class CustomListItemTwo extends StatelessWidget {
   final String subtitle;
   final String author;
   final String publishDate;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +155,6 @@ class CustomListItemTwo extends StatelessWidget {
 
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
-  
 
   @override
   Widget build(BuildContext context) {
@@ -178,74 +175,92 @@ class MyStatelessWidget extends StatelessWidget {
             },
           ),
         ),
-        Align(alignment: Alignment.topLeft,
-        child:Text('Mumbai',style:TextStyle(  
-              fontSize: 10,  
-              color: Colors.blue,  
-              fontStyle: FontStyle.normal, 
-              shadows: [  
-                Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)  
-              ]  
-            ),  )
-        ),
-        Expanded(child: Row(
+        Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              'Mumbai',
+              style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.blue,
+                  fontStyle: FontStyle.normal,
+                  shadows: [
+                    Shadow(
+                        color: Colors.blueAccent,
+                        offset: Offset(2, 1),
+                        blurRadius: 10)
+                  ]),
+            )),
+        Expanded(
+            child: Row(
           children: [
-            Text(  
-            "Accomodation for: ",  
-            style: TextStyle(  
-              fontSize: 20,  
-              color: Colors.white,  
-              fontStyle: FontStyle.normal, 
-              shadows: [  
-                Shadow(color: Colors.blueAccent, offset: Offset(2,1), blurRadius:10)  
-              ]  
-            ),  
-          ),  SizedBox(width: 5,),
+            Text(
+              "Accomodation for: ",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontStyle: FontStyle.normal,
+                  shadows: [
+                    Shadow(
+                        color: Colors.blueAccent,
+                        offset: Offset(2, 1),
+                        blurRadius: 10)
+                  ]),
+            ),
+            SizedBox(
+              width: 5,
+            ),
             TextButton.icon(
               style: TextButton.styleFrom(
                 textStyle: TextStyle(color: Colors.white),
                 backgroundColor: Colors.blueAccent,
-                shape:RoundedRectangleBorder(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24.0),
-                ), 
+                ),
               ),
-              onPressed: (){final screenHeight = MediaQuery.of(context).size.height;},
+              onPressed: () {
+                final screenHeight = MediaQuery.of(context).size.height;
+              },
               icon: Icon(Icons.male_outlined),
-              label: Text('Boys',),
-        ),
-        SizedBox(width: 5,),
+              label: Text(
+                'Boys',
+              ),
+            ),
+            SizedBox(
+              width: 5,
+            ),
             TextButton.icon(
               style: TextButton.styleFrom(
                 textStyle: TextStyle(color: Colors.white),
                 backgroundColor: Colors.pink,
-                shape:RoundedRectangleBorder(
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24.0),
-                ), 
+                ),
               ),
-              onPressed: (){// Get the height you want to scroll to. 
-              final screenHeight = MediaQuery.of(context).size.height*0.5;},
+              onPressed: () {
+                // Get the height you want to scroll to.
+                final screenHeight = MediaQuery.of(context).size.height * 0.5;
+              },
               icon: Icon(Icons.female),
-              label: Text('Girls',),
-        ),
+              label: Text(
+                'Girls',
+              ),
+            ),
           ],
-        )
-        ),
-         Divider(
+        )),
+        Divider(
           color: Colors.white,
         ),
         Container(
-      height: 350.0,
-      width: 200.0,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-              'images/mumbai_boys.png'),
-          
+          height: 350.0,
+          width: 200.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/mumbai_boys.png'),
+            ),
+            shape: BoxShape.rectangle,
+          ),
         ),
-        shape: BoxShape.rectangle,
-      ),
-    ),
-         Divider(
+        Divider(
           color: Colors.white,
         ),
         CustomListItemTwo(
@@ -381,22 +396,20 @@ class MyStatelessWidget extends StatelessWidget {
           author: 'Open',
           publishDate: 'for boys',
         ),
-       Divider(
+        Divider(
           color: Colors.white,
         ),
         Container(
-      height: 350.0,
-      width: 200.0,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-              'images/mumbai_girls.png'),
-          
+          height: 350.0,
+          width: 200.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/mumbai_girls.png'),
+            ),
+            shape: BoxShape.rectangle,
+          ),
         ),
-        shape: BoxShape.rectangle,
-      ),
-    ),
-         Divider(
+        Divider(
           color: Colors.white,
         ),
         CustomListItemTwo(
@@ -416,7 +429,7 @@ class MyStatelessWidget extends StatelessWidget {
         Divider(
           color: Colors.white,
         ),
-       CustomListItemTwo(
+        CustomListItemTwo(
           thumbnail: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -433,7 +446,7 @@ class MyStatelessWidget extends StatelessWidget {
         Divider(
           color: Colors.white,
         ),
-       CustomListItemTwo(
+        CustomListItemTwo(
           thumbnail: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -450,7 +463,7 @@ class MyStatelessWidget extends StatelessWidget {
         Divider(
           color: Colors.white,
         ),
-       CustomListItemTwo(
+        CustomListItemTwo(
           thumbnail: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -467,7 +480,7 @@ class MyStatelessWidget extends StatelessWidget {
         Divider(
           color: Colors.white,
         ),
-       CustomListItemTwo(
+        CustomListItemTwo(
           thumbnail: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -484,7 +497,7 @@ class MyStatelessWidget extends StatelessWidget {
         Divider(
           color: Colors.white,
         ),
-       CustomListItemTwo(
+        CustomListItemTwo(
           thumbnail: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -501,7 +514,7 @@ class MyStatelessWidget extends StatelessWidget {
         Divider(
           color: Colors.white,
         ),
-       CustomListItemTwo(
+        CustomListItemTwo(
           thumbnail: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -535,8 +548,6 @@ class MyStatelessWidget extends StatelessWidget {
         Divider(
           color: Colors.white,
         ),
-       
-
       ],
     );
   }
