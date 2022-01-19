@@ -70,6 +70,7 @@ class _GenderPageState extends State<GenderPage> {
               child:  Material(
               color: Colors.blueAccent,
               elevation: 8,
+              borderRadius: BorderRadius.circular(10),
               child: InkWell(
                 splashColor: Colors.black45,
                 onTap: (){
@@ -90,7 +91,8 @@ class _GenderPageState extends State<GenderPage> {
                 SizedBox(height:6),
                 Text(
                   'For Boys',
-                  style: TextStyle(fontSize: 32, color: Colors.white)
+                  style: TextStyle(fontSize: 32, color: Colors.white,)
+                  
                 ),
                 SizedBox(height: 6),
                 ]
@@ -103,6 +105,7 @@ class _GenderPageState extends State<GenderPage> {
               child:  Material(
               color: Colors.blueAccent,
               elevation: 8,
+              borderRadius: BorderRadius.circular(10),
               child: InkWell(
                 splashColor: Colors.black45,
                 onTap: (){

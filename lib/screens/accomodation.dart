@@ -23,20 +23,32 @@ class _AccomPageState extends State<AccomPage> {
     // List of items in our dropdown menu
     
     var children2 = [
-      Align(
-        alignment: Alignment.topRight,
-        child: IconButton(
-          icon: const Icon(Icons.account_circle),
-          color: Colors.indigo[900],
-          iconSize: 70,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProfilePage()),
-            );
-          },
-        ),
-      ),
+       Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  icon:
+                      Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                Text(
+                  'Accomodation',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.account_circle),
+                  color: Colors.indigo[900],
+                  iconSize: 70,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  },
+                ),
+              ],
+              
+            ),
       Expanded(
         flex: 1,
         child: Row(
