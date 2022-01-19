@@ -23,9 +23,19 @@ class _RoomyPageState extends State<RoomyPage> {
     return Scaffold(
       backgroundColor: Colors.black45,
       body: Column(children: [
-        Align(
-          alignment: Alignment.topRight,
-          child: IconButton(
+       Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+               IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
+                    onPressed: () => Navigator.of(context).pop(),
+                              ), 
+                Text('Roomates for Boys♂️',
+                  style: TextStyle (
+                    color: Colors.white,
+                    fontSize: 25
+                  ),
+                ),
+                IconButton(
             icon: const Icon(Icons.account_circle),
             color: Colors.indigo[900],
             iconSize: 70,
@@ -36,7 +46,8 @@ class _RoomyPageState extends State<RoomyPage> {
               );
             },
           ),
-        ),
+              ],
+            ),
         Expanded(
           flex: 1,
           child: Row(

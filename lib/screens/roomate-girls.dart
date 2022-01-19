@@ -24,9 +24,19 @@ class _Roomy2PageState extends State<Roomy2Page> {
     return Scaffold(
       backgroundColor: Colors.black45,
       body: Column(children: [
-        Align(
-          alignment: Alignment.topRight,
-          child: IconButton(
+       Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+               IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
+                    onPressed: () => Navigator.of(context).pop(),
+                              ), 
+                Text('Roomates For Girls♀️',
+                  style: TextStyle (
+                    color: Colors.white,
+                    fontSize: 25
+                  ),
+                ),
+                IconButton(
             icon: const Icon(Icons.account_circle),
             color: Colors.indigo[900],
             iconSize: 70,
@@ -37,7 +47,8 @@ class _Roomy2PageState extends State<Roomy2Page> {
               );
             },
           ),
-        ),
+              ],
+            ),
         Expanded(
           flex: 1,
           child: Row(

@@ -70,9 +70,9 @@ class _Nashik1PageState extends State<Nashik1Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Rajat Harne', profileImg: 'img/avatar_boy.png', bio: "Software Developer"),
-     Person(name: 'Andy Smith', profileImg: 'img/pic-2.png', bio: "UI Designer"),
-     Person(name: 'Creepy Story', profileImg: 'img/pic-3.png', bio: "Software Tester")
+     Person(name: 'Suraj Patil', profileImg: 'images/avatar_boy.png', bio: "Software Developer"),
+     Person(name: 'Rishab Pant', profileImg: 'images/avatar_boy.png', bio: "i'm good at coding"),
+     Person(name: 'Sankalp Chordia', profileImg: 'images/avatar_boy.png', bio: "Software Tester at IBM")
   ];
 
    Widget personDetailCard(Person) {

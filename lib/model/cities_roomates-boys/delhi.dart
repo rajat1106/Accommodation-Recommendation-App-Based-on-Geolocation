@@ -70,9 +70,9 @@ class _Delhi1PageState extends State<Delhi1Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Rajat Harne', profileImg: 'img/avatar_boy.png', bio: "Software Developer"),
-     Person(name: 'Andy Smith', profileImg: 'img/pic-2.png', bio: "UI Designer"),
-     Person(name: 'Creepy Story', profileImg: 'img/pic-3.png', bio: "Software Tester")
+     Person(name: 'Virat Kohli', profileImg: 'images/avatar_boy.png', bio: "Intern at Google"),
+     Person(name: 'Will Smith', profileImg: 'images/avatar_boy.png', bio: "UI Designer"),
+     Person(name: 'Rohan Joshi', profileImg: 'images/avatar_boy.png', bio: "Software Tester")
   ];
 
    Widget personDetailCard(Person) {

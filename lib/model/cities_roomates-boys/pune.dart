@@ -70,9 +70,9 @@ class _Pune1PageState extends State<Pune1Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Rajat Harne', profileImg: 'img/avatar_boy.png', bio: "Software Developer"),
-     Person(name: 'Andy Smith', profileImg: 'img/pic-2.png', bio: "UI Designer"),
-     Person(name: 'Creepy Story', profileImg: 'img/pic-3.png', bio: "Software Tester")
+     Person(name: 'Rajat Harne', profileImg: 'images/avatar_boy.png', bio: "Software Developer"),
+     Person(name: 'Omkar Rasal', profileImg: 'images/avatar_boy.png', bio: "Student at VIT Pune"),
+     Person(name: 'Harshit Mundra', profileImg: 'images/avatar_boy.png', bio: "Software Tester at Accenture")
   ];
 
    Widget personDetailCard(Person) {

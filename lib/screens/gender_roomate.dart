@@ -26,66 +26,118 @@ class _GenderPageState extends State<GenderPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-               IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
-                    onPressed: () => Navigator.of(context).pop(),
-                              ), 
-                Text('Roomates',
-                  style: TextStyle (
-                    color: Colors.white,
-                    fontSize: 25
-                  ),
+                IconButton(
+                  icon:
+                      Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                Text(
+                  'Roomates',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
                 IconButton(
-            icon: const Icon(Icons.account_circle),
-            color: Colors.indigo[900],
-            iconSize: 70,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
-              );
-            },
-          ),
-              ],
-            ),
-            Expanded(child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-               mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-                      Container(child: 
-                      ConstrainedBox(
-    constraints: BoxConstraints.expand(),
-    child: TextButton(onPressed:() {
+                  icon: const Icon(Icons.account_circle),
+                  color: Colors.indigo[900],
+                  iconSize: 70,
+                  onPressed: () {
                     Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  },
+                ),
+              ],
+              
+            ),
+             SizedBox(height: 100,),
+        Align(
+         alignment: FractionalOffset(0.2, 0.6),
+                    child: Center(
+                      child: Text(
+                        'Rommates for ?',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+        ),
+    SizedBox(height: 50,),
+           Row(
+           children:[
+             SizedBox(width: 10,),
+           Center(
+              child:  Material(
+              color: Colors.blueAccent,
+              elevation: 8,
+              child: InkWell(
+                splashColor: Colors.black45,
+                onTap: (){
+                  Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => RoomyPage()),
-                    );
-                  },
-        child: Image.asset('gender_boys.jpg')
-                  )
-                )
-            ),
-            Container(child: 
-                      ConstrainedBox(
-    constraints: BoxConstraints.expand(),
-    child: TextButton(onPressed:() {
-                    Navigator.push(
+                  );
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                children:[
+                  Ink.image(
+                  image: const AssetImage('images/gender_boys.jpg'),
+                  height: 200,
+                  width: 150,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(height:6),
+                Text(
+                  'For Boys',
+                  style: TextStyle(fontSize: 32, color: Colors.white)
+                ),
+                SizedBox(height: 6),
+                ]
+              )
+              ),
+           ),
+           ),
+           SizedBox(width: 20,),
+           Center(
+              child:  Material(
+              color: Colors.blueAccent,
+              elevation: 8,
+              child: InkWell(
+                splashColor: Colors.black45,
+                onTap: (){
+                  Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Roomy2Page()),
-                    );
-                  },
-        child: Image.asset('gender_girls.jpg')
-                  )
-                )
-            )
-                  ],
-            ),
-          ),
-          ],
+                  );
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                children:[
+                  Ink.image(
+                  image: const AssetImage('images/gender_girls.jpg'),
+                  height: 200,
+                  width: 150,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(height:6),
+                Text(
+                  'For Girls',
+                  style: TextStyle(fontSize: 32, color: Colors.white)
+                ),
+                SizedBox(height: 6),
+                ]
+              )
+              ),
+           ),
+           
+           ),
+          ]
+        )
+           ],
+         
         ),
-        
       ),
     );
   }
-  }
+}

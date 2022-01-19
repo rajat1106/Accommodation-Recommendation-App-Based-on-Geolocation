@@ -70,9 +70,9 @@ class _Pune2PageState extends State<Pune2Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Janhavi Shukla', profileImg: 'img/avatar_boy.png', bio: "Student at VIT Pune"),
-     Person(name: 'Andy Smith', profileImg: 'img/pic-2.png', bio: "UI Designer"),
-     Person(name: 'Creepy Story', profileImg: 'img/pic-3.png', bio: "Software Tester")
+     Person(name: 'Janhavi Shukla', profileImg: 'images/avatar_girl.png', bio: "Student at VIT Pune"),
+     Person(name: 'Bhakti Patil', profileImg: 'images/avatar_girl.png', bio: "Student at MIT WPU"),
+     Person(name: 'Sanika Joshi', profileImg: 'images/avatar_girl.png', bio: "Student at VIT Pune")
   ];
 
    Widget personDetailCard(Person) {

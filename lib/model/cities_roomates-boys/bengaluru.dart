@@ -70,9 +70,7 @@ class _Bang1PageState extends State<Bang1Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Rajat Harne', profileImg: 'img/avatar_boy.png', bio: "Software Developer"),
-     Person(name: 'Andy Smith', profileImg: 'img/pic-2.png', bio: "UI Designer"),
-     Person(name: 'Creepy Story', profileImg: 'img/pic-3.png', bio: "Software Tester")
+     Person(name: 'Nirmal Patil', profileImg: 'images/avatar_boy.png', bio: "Student at CHRIST"),
   ];
 
    Widget personDetailCard(Person) {

@@ -70,8 +70,8 @@ class _Delhi2PageState extends State<Delhi2Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Anagha Patil', profileImg: 'img/avatar_boy.png', bio: "Student at DU"),
-     Person(name: 'Ananya Pandey', profileImg: 'img/pic-2.png', bio: "Instagram Influcncer"),
+     Person(name: 'Anagha Patil', profileImg: 'images/avatar_girl.png', bio: "Student at DU"),
+     Person(name: 'Ananya Pandey', profileImg: 'images/avatar_girl.png', bio: "Instagram Influcncer"),
   ];
 
    Widget personDetailCard(Person) {
