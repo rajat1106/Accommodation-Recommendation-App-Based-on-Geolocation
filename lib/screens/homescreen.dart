@@ -4,6 +4,7 @@ import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sdp_v2/screens/gender_roomate.dart';
 import 'package:sdp_v2/screens/roomate_boys.dart';
 import 'accomodation.dart';
 import 'login.dart';
@@ -21,37 +22,6 @@ class HomeScreen extends StatelessWidget {
       body: FutureBuilder(
           future: _firebaseApp,
           builder: (context, snapshot) {
-            //           drawer: Drawer(
-            //   child: ListView(
-            //     padding: EdgeInsets.zero,
-            //     children: const <Widget>[
-            //       DrawerHeader(
-            //         decoration: BoxDecoration(
-            //           color: Colors.blue,
-            //         ),
-            //         child: Text(
-            //           'Drawer Header',
-            //           style: TextStyle(
-            //             color: Colors.green,
-            //             fontSize: 24,
-            //           ),
-            //         ),
-            //       ),
-            //       ListTile(
-            //         leading: Icon(Icons.message),
-            //         title: Text('Messages'),
-            //       ),
-            //       ListTile(
-            //         leading: Icon(Icons.account_circle),
-            //         title: Text('Profile'),
-            //       ),
-            //       ListTile(
-            //         leading: Icon(Icons.settings),
-            //         title: Text('Settings'),
-            //       ),
-            //     ],
-            //   ),
-            // );
             return Center(
               child: Column(
                 children: [
@@ -167,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => RoomyPage()),
+                                  builder: (context) => GenderPage()),
                             );
                           })
                       //),
