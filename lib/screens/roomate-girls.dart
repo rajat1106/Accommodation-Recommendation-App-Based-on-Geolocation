@@ -9,7 +9,6 @@ import 'package:sdp_v2/model/cities_roomates-girls/delhi.dart';
 import 'package:sdp_v2/model/cities_roomates-girls/mumbai.dart';
 import 'package:sdp_v2/model/cities_roomates-girls/nashik.dart';
 import 'package:sdp_v2/model/cities_roomates-girls/pune.dart';
-import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
@@ -45,7 +44,7 @@ class _Roomy2PageState extends State<Roomy2Page> {
                IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
                     onPressed: () => Navigator.of(context).pop(),
                               ), 
-                Text('Roomates For Girls♀️',
+                Text('Roommates For Girls♀️',
                   style: TextStyle (
                     color: Colors.white,
                     fontSize: 25

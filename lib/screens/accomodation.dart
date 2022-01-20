@@ -8,7 +8,7 @@ import 'package:sdp_v2/model/cities/delhi.dart';
 import 'package:sdp_v2/model/cities/mumbai.dart';
 import 'package:sdp_v2/model/cities/nashik.dart';
 import 'package:sdp_v2/model/cities/pune.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+
 import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 

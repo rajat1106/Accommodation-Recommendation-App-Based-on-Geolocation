@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+
 import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/screens/roomate-girls.dart';
 import 'package:sdp_v2/screens/roomate_boys.dart';

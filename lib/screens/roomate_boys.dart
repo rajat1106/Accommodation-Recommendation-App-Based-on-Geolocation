@@ -8,7 +8,7 @@ import 'package:sdp_v2/model/cities_roomates-boys/delhi.dart';
 import 'package:sdp_v2/model/cities_roomates-boys/mumbai.dart';
 import 'package:sdp_v2/model/cities_roomates-boys/nashik.dart';
 import 'package:sdp_v2/model/cities_roomates-boys/pune.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+
 import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
@@ -44,7 +44,7 @@ class _RoomyPageState extends State<RoomyPage> {
                IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
                     onPressed: () => Navigator.of(context).pop(),
                               ), 
-                Text('Roomates for Boys♂️',
+                Text('Roommates for Boys♂️',
                   style: TextStyle (
                     color: Colors.white,
                     fontSize: 25
