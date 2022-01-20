@@ -5,7 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+
 import 'package:sdp_v2/pallaete.dart';
 import 'package:sdp_v2/screens/login.dart';
 import 'package:sdp_v2/utils/user_preferences.dart';
@@ -26,12 +26,9 @@ class ProfilePage2 extends StatefulWidget {
 }
 
 class _ProfilePage2State extends State<ProfilePage2> {
-  var datauid;
    List docsList = [];
-     var firebaseUser =
-     FirebaseAuth.instance.currentUser;
-  
-  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();                                 
+    var firebaseUser = FirebaseAuth.instance.currentUser;    
+    final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();                           
   final CollectionReference ref = FirebaseFirestore.instance.collection('Users');
   Future<void> getData() async {
     QuerySnapshot querySnapshot = await ref.get();
@@ -57,10 +54,10 @@ class _ProfilePage2State extends State<ProfilePage2> {
   @override
   Widget build(BuildContext context) {
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
-  
+    //docsList=widget.userRef.docs.toList();
     return Scaffold(
       appBar: buildAppBar(context),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.black54,
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
@@ -75,10 +72,10 @@ class _ProfilePage2State extends State<ProfilePage2> {
                     CircleAvatar(
                       backgroundImage:
                           AssetImage("images/avatar_boy.png"),
-                      radius: 70.0,
+                      radius: 71.0,
                     ),
                     Positioned(
-                        bottom: 10,
+                        bottom: 5,
                         right: 12,
                         child: IconButton(
                           color: Colors.white60,
@@ -99,30 +96,39 @@ class _ProfilePage2State extends State<ProfilePage2> {
           ),
           ListTile(
             title: Text(
-              " 👤 : Rajat Harne",
+              " 👤 : Rajat Harne ",//${widget.userRef[0].data()['Name']}",//${FirebaseAuth.instance.currentUser!.displayName.toString()}",
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold,),
             ),
           ),
           ListTile(
             title: Text(
-              " 🏡 : Pune",//${widget.userRef[0].data()['City']}",
+              " 🏡 : Pune ",//${widget.userRef[0].data()['City']}",
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold,),
             ),
           ),
           TextField(
             //controller: _userbio,
             decoration: InputDecoration( 
+              prefixIcon: Icon(Icons.speaker_notes_outlined ),
+              labelText: "Write About Yourself...",
+              labelStyle: TextStyle(
+                  color: Colors.white,
+              ),
               prefixText: 'Bio',
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide.none),
+                 borderSide: const BorderSide(color: Colors.white60,),),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                borderSide: BorderSide(color: Colors.blueAccent),
+              ),
               filled: true,
               fillColor: Colors.grey[800],
               contentPadding: EdgeInsets.all(10),
               border: InputBorder.none,
             ),
           ),
-          const SizedBox(height: 48),
+          const SizedBox(height: 10),
           Align(
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
@@ -134,23 +140,7 @@ class _ProfilePage2State extends State<ProfilePage2> {
                   onPressed: () async {
                     //updateBio(_userbio.value);
                   })),
-          
-          // Container(
-          //   padding: const EdgeInsets.fromLTRB(
-          //     0,
-          //     20,
-          //     50,
-          //     20,
-          //   ),
-          //   child: Text(
-          //     FirebaseAuth.instance.currentUser!.email.toString(),
-          //     style: const TextStyle(
-          //         fontSize: 20,
-          //         fontWeight: FontWeight.bold,
-          //         color: Colors.white),
-          //   ),
-          // ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 34),
           Flexible(
             child: Row(
               // alignment: Alignment.bottomCenter,
@@ -179,6 +169,7 @@ class _ProfilePage2State extends State<ProfilePage2> {
                 icons: [null, FontAwesomeIcons.times],
                 onToggle: (index) {
                   print('switched to: $index');
+                  
                 },
               ),
               ]
@@ -258,4 +249,7 @@ class _ProfilePage2State extends State<ProfilePage2> {
   //       ),
   //     );
 
+}
+
+uploadImage() {
 }

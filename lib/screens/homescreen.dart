@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,11 +23,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
   List docsList = [];
-     var firebaseUser =
-                                      FirebaseAuth.instance.currentUser;
-                                      
-  final CollectionReference ref =
-      FirebaseFirestore.instance.collection('Users');
+  var firebaseUser =FirebaseAuth.instance.currentUser;                                   
+  final CollectionReference ref = FirebaseFirestore.instance.collection('Users');
   Future<void> getData() async {
     QuerySnapshot querySnapshot = await ref.get();
     docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
@@ -46,6 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
     print(docsList[0].data()['uid']);
     print(docsList);
     print(docsList[0].data()['City']);
+    print(docsList[0].data()['Name']);
+    print(docsList[0].data()['email']);
     return Scaffold(
       backgroundColor: Colors.black45,
       body: FutureBuilder(
@@ -141,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // alignment: Alignment.bottomCenter,
                       child: ElevatedButton(
 
-                          child: const Text('Roomate',
+                          child: const Text('Roommate',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 30,
@@ -158,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Flexible(
                      
                       child: ElevatedButton(
-                          child: const Text('Accomodation',
+                          child: const Text('Accommodation',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 30,
