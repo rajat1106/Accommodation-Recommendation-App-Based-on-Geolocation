@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class NashikPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class NashikPage extends StatefulWidget {
 class _NashikPageState extends State<NashikPage> {
   @override
   Widget build(BuildContext context) {
-    final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+    
     // List of items in our dropdown menu
   
     return Scaffold(
@@ -85,7 +86,8 @@ class _ArticleDescription extends StatelessWidget {
                 ),
               ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => MapsLauncher.launchCoordinates(
+                        20.006962095128227, 73.76380013485422),
                     icon: Icon(Icons.directions),
                     color: Colors.blue,
                   )
@@ -168,9 +170,10 @@ class MyStatelessWidget extends StatelessWidget {
             color: Colors.indigo[900],
             iconSize: 70,
             onPressed: () {
+              var docsList;
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),

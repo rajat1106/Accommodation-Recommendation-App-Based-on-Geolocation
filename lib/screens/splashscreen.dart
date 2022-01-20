@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sdp_v2/screens/login.dart';
@@ -17,7 +18,16 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3),() {if(FirebaseAuth.instance.currentUser != null){
-          Navigator.pushReplacementNamed(context, '/home');
+          FirebaseFirestore.instance
+            .collection('Users')
+            .get()
+            .then((value) => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(userRef: value),
+                )
+                )
+                );
           }
       else{
         Navigator.pushReplacementNamed(context, '/login');

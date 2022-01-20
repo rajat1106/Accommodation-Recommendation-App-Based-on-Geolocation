@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,19 +9,32 @@ import 'package:sdp_v2/model/cities_roomates-boys/mumbai.dart';
 import 'package:sdp_v2/model/cities_roomates-boys/nashik.dart';
 import 'package:sdp_v2/model/cities_roomates-boys/pune.dart';
 import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class RoomyPage extends StatefulWidget {
   static const routeName = '/rommate';
+  late final QuerySnapshot userRef;
   @override
   _RoomyPageState createState() => _RoomyPageState();
 }
 
 class _RoomyPageState extends State<RoomyPage> {
+  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
   @override
   Widget build(BuildContext context) {
     final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
-
+    
     return Scaffold(
       backgroundColor: Colors.black45,
       body: Column(children: [
@@ -42,7 +57,7 @@ class _RoomyPageState extends State<RoomyPage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),

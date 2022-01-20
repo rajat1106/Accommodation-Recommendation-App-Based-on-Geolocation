@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +9,34 @@ import 'package:sdp_v2/model/cities/mumbai.dart';
 import 'package:sdp_v2/model/cities/nashik.dart';
 import 'package:sdp_v2/model/cities/pune.dart';
 import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class AccomPage extends StatefulWidget {
   static const routeName = '/accomodation';
+   late final QuerySnapshot userRef;
   @override
   _AccomPageState createState() => _AccomPageState();
 }
 
 class _AccomPageState extends State<AccomPage> {
+  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
   @override
   Widget build(BuildContext context) {
     final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
@@ -32,7 +53,7 @@ class _AccomPageState extends State<AccomPage> {
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 Text(
-                  'Accomodation',
+                  'Accommodation',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
                 IconButton(
@@ -42,7 +63,7 @@ class _AccomPageState extends State<AccomPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                      MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
                     );
                   },
                 ),
@@ -57,11 +78,11 @@ class _AccomPageState extends State<AccomPage> {
             SizedBox(width: 20,),
             const Center(
               child: Text(
-                'Select your City',
+                'Find Accommodation At',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold),
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,12 +12,40 @@ import 'login.dart';
 
 // import 'signup.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
+  final QuerySnapshot userRef;
+ const HomeScreen({ required this.userRef});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
+    docsList=widget.userRef.docs.toList();
+    print(docsList[0].data()['uid']);
+    print(docsList);
+    print(docsList[0].data()['City']);
     return Scaffold(
       backgroundColor: Colors.black45,
       body: FutureBuilder(
@@ -34,16 +63,13 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.indigo[900],
                         iconSize: 70,
                         onPressed: () {
+                         
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ProfilePage()),
+                                builder: (context) => ProfilePage2(userRef: docsList,)),
                           );
-                          // FirebaseFirestore.instance.collection('Users').get().then((value) => Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => ProfilePage(doc: value),
-                          //     )));
+                        
                         },
                       ),
                     ),
@@ -71,6 +97,7 @@ class HomeScreen extends StatelessWidget {
                         width: 110,
                         fit: BoxFit.fitWidth,
                       )),
+                      
                   const Flexible(
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
@@ -108,26 +135,12 @@ class HomeScreen extends StatelessWidget {
                               ));
                             }
                           })),
-                  //   Flexible(
-                  //   child: Center(
-                  //   child: RichText(
-
-                  //   text: TextSpan(
-                  //     text: 'What are you ',
-                  //     style: DefaultTextStyle.of(context).style,
-                  //     color: Colors.white,
-                  //     children: const <TextSpan>[
-                  //       TextSpan(text: 'looking', style: TextStyle(fontWeight: FontWeight.bold)),
-                  //       TextSpan(text: ' for?'),
-                  //     ],
-                  //   ),
-                  // ),
-                  // ),
-                  // ),
+                
                   Flexible(
                       // child: Align(
                       // alignment: Alignment.bottomCenter,
                       child: ElevatedButton(
+
                           child: const Text('Roomate',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -159,12 +172,12 @@ class HomeScreen extends StatelessWidget {
                           })
       
                       ),
-                  
+                   
                     Align(
                         alignment: Alignment.bottomCenter,
                         child: Image.asset('images/skyline1.png')),
-                  
                 ],
+               
               ),
             );
           }),

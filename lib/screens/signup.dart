@@ -195,6 +195,8 @@ class SignupScreen extends StatelessWidget {
                                     'Name': fullname.text,
                                     'City': city.text,
                                     'Bio': "",
+                                    'Roomy': true,
+                                    'uid': firebaseUser.uid.toString(),
                                   });
                                   Navigator.of(context).pushReplacementNamed(
                                       LoginScreen.routeName);

@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class Mumbai2Page extends StatefulWidget {
   static const routeName = '/mumbai';
+  late QuerySnapshot userRef;
   @override
   _Mumbai2PageState createState() => _Mumbai2PageState();
 }
@@ -23,8 +27,18 @@ class Person {
 }
 
 class _Mumbai2PageState extends State<Mumbai2Page> {
-  @override
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -38,7 +52,7 @@ class _Mumbai2PageState extends State<Mumbai2Page> {
                IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
                     onPressed: () => Navigator.of(context).pop(),
                               ), 
-                Text('Roomates',
+                Text('Mumbai',
                   style: TextStyle (
                     color: Colors.white,
                     fontSize: 25
@@ -51,7 +65,7 @@ class _Mumbai2PageState extends State<Mumbai2Page> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),
@@ -70,7 +84,7 @@ class _Mumbai2PageState extends State<Mumbai2Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Harshita Jain', profileImg: 'images/avatar_girl.png', bio: "Software Developer at Infoysis"),
+     Person(name: 'Harshita Jain', profileImg: 'images/avatar_girl.png', bio: "Software Developer at infosys"),
      Person(name: 'Niharika Hande', profileImg: 'images/avatar_girl.png', bio: "Student at VJTI"),
      Person(name: 'Shruti Verma', profileImg: 'images/avatar_girl.png', bio: "Student at IIT Mumbai")
   ];

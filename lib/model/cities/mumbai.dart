@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
@@ -14,7 +14,7 @@ class MumbaiPage extends StatefulWidget {
 class _MumbaiPageState extends State<MumbaiPage> {
   @override
   Widget build(BuildContext context) {
-    final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+    
 
     return Scaffold(
       backgroundColor: Colors.black45,
@@ -168,9 +168,10 @@ class MyStatelessWidget extends StatelessWidget {
             color: Colors.indigo[900],
             iconSize: 70,
             onPressed: () {
+              var docsList;
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),

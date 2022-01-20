@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:flutter/material.dart';
+import 'package:sdp_v2/screens/splashscreen.dart';
 import 'homescreen.dart';
 import 'signup.dart';
 
@@ -129,8 +131,16 @@ class LoginScreen extends StatelessWidget{
                                       password: password.text,
                                     )
                                   .then((value) {
-                                Navigator.of(context)
-                                    .pushReplacementNamed(HomeScreen.routeName);
+                                FirebaseFirestore.instance
+            .collection('Users')
+            .get()
+            .then((value) => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(userRef: value),
+                )
+                )
+                );
                               });
                             } 
                             catch (e) {

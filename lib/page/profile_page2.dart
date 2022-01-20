@@ -1,10 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+  import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sdp_v2/page/profile_page.dart';
 import 'package:sdp_v2/pallaete.dart';
 import 'package:sdp_v2/screens/login.dart';
 import 'package:sdp_v2/utils/user_preferences.dart';
@@ -16,69 +17,53 @@ import 'package:toggle_switch/toggle_switch.dart';
 import '../pallaete.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ProfilePage extends StatefulWidget {
-  // final QuerySnapshot doc;
-  const ProfilePage({Key? key}) : super(key: key);
+class ProfilePage2 extends StatefulWidget {
   static const routeName = '/account';
+  var userRef;
+  ProfilePage2({ required this.userRef});
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _ProfilePage2State createState() => _ProfilePage2State();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
-  late TextEditingController _userbio;
-  void updateBio(str) {
-    FirebaseFirestore.instance
-        .collection("Users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .set({
-      "Bio": str,
-    });
+class _ProfilePage2State extends State<ProfilePage2> {
+  var datauid;
+   List docsList = [];
+     var firebaseUser =
+     FirebaseAuth.instance.currentUser;
+  
+  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();                                 
+  final CollectionReference ref = FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
+  getValue(){
+    for (var i = 0; i < docsList.length; i++) {
+      if(docsList[i].data()['uid'].toString()==firebaseUser?.uid.toString())
+      {  
+      }
+    }
   }
 
-  //QueryDocumentSnapshot d=FirebaseFirestore.instance.widget.doc.doc(FirebaseAuth.instance.currentUser!.uid).get();
-  var x;
-  @override
+   @override
   void initState() {
-     var d;
-    getuser() async {
-      await FirebaseFirestore.instance
-          .collection('Users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .get()
-          .then((value) => d = value);
-      print(d);}
-    final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
-    getuser();
-   _userbio = TextEditingController(text: d.get('Bio'));
+    // TODO: implement initState
+    super.initState();
+    getData();
+    getValue();
   }
-  late bool switchListTileValue;
+
+
   @override
   Widget build(BuildContext context) {
-//     update() async {
-//     await widget.doc.update({
-//       'Bio': _userbio.text,
-//     });
-// }
+  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  
     return Scaffold(
       appBar: buildAppBar(context),
       backgroundColor: Colors.black,
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
-          // ProfileWidget(
-          //   imagePath: user.imagePath,
-          //   onClicked: () async {},
-          // ),
-          // Container(
-          //           padding: const EdgeInsets.fromLTRB(0,0,0,50,),
-          //           child: Text(
-          //             FirebaseAuth.instance.currentUser!.displayName.toString(),
-          //             style: const TextStyle(
-          //               fontSize: 20,
-          //               fontWeight: FontWeight.bold,
-          //             ),
-          //           ),
-          //         ),
           const SizedBox(height: 24),
           Container(
             decoration: BoxDecoration(color: Colors.teal),
@@ -89,10 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: <Widget>[
                     CircleAvatar(
                       backgroundImage:
-                          // (_userProfile != null)
-                          //     ? Image.network(_userProfile)
-                          //     :
-                          AssetImage("img/p.png"),
+                          AssetImage("images/avatar_boy.png"),
                       radius: 70.0,
                     ),
                     Positioned(
@@ -111,25 +93,25 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           ListTile(
             title: Text(
-              " 📧 : ", //$_userEmail,
-              style: TextStyle(fontSize: 17),
+              " 📧 : ${FirebaseAuth.instance.currentUser!.email.toString()}",
+              style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold,),
             ),
           ),
           ListTile(
             title: Text(
-              " 👤 : ", //$_userName",
-              style: TextStyle(fontSize: 17),
+              " 👤 : Rajat Harne",
+              style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold,),
             ),
           ),
           ListTile(
             title: Text(
-              " 🏡 : ", //$_userCity",
-              style: TextStyle(fontSize: 17),
+              " 🏡 : Pune",//${widget.userRef[0].data()['City']}",
+              style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold,),
             ),
           ),
           TextField(
-            controller: _userbio,
-            decoration: InputDecoration(
+            //controller: _userbio,
+            decoration: InputDecoration( 
               prefixText: 'Bio',
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -150,30 +132,40 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontSize: 30,
                       )),
                   onPressed: () async {
-                    updateBio(_userbio.value);
+                    //updateBio(_userbio.value);
                   })),
-          ElevatedButton(onPressed: null, child: Text('Submit')),
-          Container(
-            padding: const EdgeInsets.fromLTRB(
-              0,
-              20,
-              50,
-              20,
-            ),
-            child: Text(
-              FirebaseAuth.instance.currentUser!.email.toString(),
-              style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-          ),
+          
+          // Container(
+          //   padding: const EdgeInsets.fromLTRB(
+          //     0,
+          //     20,
+          //     50,
+          //     20,
+          //   ),
+          //   child: Text(
+          //     FirebaseAuth.instance.currentUser!.email.toString(),
+          //     style: const TextStyle(
+          //         fontSize: 20,
+          //         fontWeight: FontWeight.bold,
+          //         color: Colors.white),
+          //   ),
+          // ),
           const SizedBox(height: 24),
           Flexible(
-            child: Align(
+            child: Row(
               // alignment: Alignment.bottomCenter,
-              child: ToggleSwitch(
-                minWidth: 90.0,
+              children: [
+                Text(
+                'Enable for Roommate:',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+               SizedBox(width: 20,),
+                ToggleSwitch(
+                minWidth: 80.0,
                 cornerRadius: 20.0,
                 activeBgColors: [
                   [Colors.cyan],
@@ -183,12 +175,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 inactiveBgColor: Colors.grey,
                 inactiveFgColor: Colors.white,
                 totalSwitches: 2,
-                labels: ['YES', ''],
+                labels: ['YES', 'NO'],
                 icons: [null, FontAwesomeIcons.times],
                 onToggle: (index) {
                   print('switched to: $index');
                 },
               ),
+              ]
             ),
           ),
           const SizedBox(height: 48),
@@ -212,20 +205,22 @@ class _ProfilePageState extends State<ProfilePage> {
                       ));
                     }
                   })),
-                   SwitchListTile(
-              value: switchListTileValue ??= true,
-              onChanged: (newValue) =>
-                  setState(() => switchListTileValue = newValue),
-              title: Text(
-                'Enable for Roomate',     
-              ),
-              subtitle: Text(
-                'looking for a roomate',
-              ),
-              tileColor: Color(0xFFF5F5F5),
-              dense: false,
-              controlAffinity: ListTileControlAffinity.trailing,
-            ), 
+
+                  
+            //        SwitchListTile(
+            //   value: switchListTileValue,
+            //   onChanged: (newValue) =>
+            //       setState(() => switchListTileValue = newValue),
+            //   title: Text(
+            //     'Enable for Roomate',     
+            //   ),
+            //   subtitle: Text(
+            //     'looking for a roomate',
+            //   ),
+            //   tileColor: Color(0xFFF5F5F5),
+            //   dense: false,
+            //   controlAffinity: ListTileControlAffinity.trailing,
+            // ), 
         ],
       ),
     );
@@ -264,63 +259,3 @@ class _ProfilePageState extends State<ProfilePage> {
   //     );
 
 }
-
-uploadImage() {}
-
-
-
-// var _userName = "";
-//   var _userEmail = "";
-//   var _userCity = "";
-//   // String _userProfile = "";
-
-//   Future<void> _getUD() async {
-//     FirebaseFirestore.instance
-//         .collection('Uu')
-//         .doc((FirebaseAuth.instance.currentUser!.uid))
-//         .get()
-//         .then((value) {
-//       setState(() {
-//         _userName = value.data()!['Name'];
-//         _userEmail = value.data()!['email'];
-//         _userCity = value.data()!['City'];
-//         // _userProfile = value.data()['url'];
-//       });
-//     });
-//   }
-
-//   void initState() {
-//     super.initState();
-//     _getUD();
-//   }
-
-//   uploadImage() async {
-//     final _storage = FirebaseStorage.instance;
-//     final _picker = ImagePicker();
-//     PickedFile image;
-//     if (PermissionStatus.granted != null) {
-//       image = await _picker.getImage(source: ImageSource.gallery);
-//       var file = File(image.path);
-//       if (image != null) {
-//         var snapshot = await _storage.ref().child(_userName).putFile(file);
-//         if (_userName != null) {
-//           var snapshot = await _storage.ref().child(_userName).putFile(file);
-//           var downloadurl = await snapshot.ref.getDownloadURL();
-//           var fuu = FirebaseAuth.instance.currentUser;
-//           u.doc(fuu.uid).set({
-//             'url': downloadurl,
-//           });
-
-//           setState(() {
-//             imurl = downloadurl;
-//             f = file;
-//           });
-//         } else {
-//           print("No path received");
-//         }
-//       } else {
-//         print("Grant permissions and try again");
-//       }
-//     }
-//   }
-// }

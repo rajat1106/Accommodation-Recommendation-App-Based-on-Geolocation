@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class Mumbai1Page extends StatefulWidget {
@@ -23,8 +25,19 @@ class Person {
 }
 
 class _Mumbai1PageState extends State<Mumbai1Page> {
-  @override
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
+  @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -38,7 +51,7 @@ class _Mumbai1PageState extends State<Mumbai1Page> {
                IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
                     onPressed: () => Navigator.of(context).pop(),
                               ), 
-                Text('Roomates',
+                Text('Mumbai',
                   style: TextStyle (
                     color: Colors.white,
                     fontSize: 25
@@ -51,7 +64,7 @@ class _Mumbai1PageState extends State<Mumbai1Page> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),
@@ -70,9 +83,9 @@ class _Mumbai1PageState extends State<Mumbai1Page> {
    
 
     List<Person> persons = [
-     Person(name: 'Rajat Harne', profileImg: 'images/avatar_boy.png', bio: "Software Developer at Infoysis"),
+     Person(name: 'Rajat Harne', profileImg: 'images/avatar_boy.png', bio: "Software Developer at Infosys"),
      Person(name: 'Vedant Gokhale', profileImg: 'images/avatar_boy.png', bio: "Student at VIT Pune"),
-     Person(name: 'Harsh Rikame', profileImg: 'images/avatar_boy.png', bio: "Student at IIT Mumbai")
+     Person(name: 'Harsh Rikame', profileImg: 'images/avatar_boy.png', bio: "Student at IIT Bombay")
   ];
 
    Widget personDetailCard(Person) {

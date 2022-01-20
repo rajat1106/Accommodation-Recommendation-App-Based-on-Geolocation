@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class PunePage extends StatefulWidget {
@@ -11,9 +14,19 @@ class PunePage extends StatefulWidget {
 }
 
 class _PunePageState extends State<PunePage> {
+   List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
   @override
   Widget build(BuildContext context) {
-    final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+    
     // List of items in our dropdown menu
     
     return Scaffold(
@@ -24,6 +37,7 @@ class _PunePageState extends State<PunePage> {
 }
 
 class _ArticleDescription extends StatelessWidget {
+  
   const _ArticleDescription({
     Key? key,
     required this.title,
@@ -36,7 +50,7 @@ class _ArticleDescription extends StatelessWidget {
   final String subtitle;
   final String author;
   final String publishDate;
-
+  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -85,7 +99,8 @@ class _ArticleDescription extends StatelessWidget {
                 ),
               ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => MapsLauncher.launchCoordinates(
+                        18.597176560200886, 74.0724340797522),
                     icon: Icon(Icons.directions),
                     color: Colors.blue,
                   )
@@ -107,6 +122,7 @@ class _ArticleDescription extends StatelessWidget {
 }
 
 class CustomListItemTwo extends StatelessWidget {
+  
   const CustomListItemTwo({
     Key? key,
     required this.thumbnail,
@@ -121,7 +137,7 @@ class CustomListItemTwo extends StatelessWidget {
   final String subtitle;
   final String author;
   final String publishDate;
-
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -155,7 +171,7 @@ class CustomListItemTwo extends StatelessWidget {
 
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -168,9 +184,10 @@ class MyStatelessWidget extends StatelessWidget {
             color: Colors.indigo[900],
             iconSize: 70,
             onPressed: () {
+              var docsList;
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),

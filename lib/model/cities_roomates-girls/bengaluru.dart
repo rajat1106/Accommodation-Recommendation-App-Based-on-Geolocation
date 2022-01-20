@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class Bang2Page extends StatefulWidget {
   static const routeName = '/bengaluru';
+  late QuerySnapshot userRef;
   @override
   _Bang2PageState createState() => _Bang2PageState();
 }
@@ -23,8 +26,18 @@ class Person {
 }
 
 class _Bang2PageState extends State<Bang2Page> {
+   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
   @override
-  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -38,7 +51,7 @@ class _Bang2PageState extends State<Bang2Page> {
                IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
                     onPressed: () => Navigator.of(context).pop(),
                               ), 
-                Text('Roomates',
+                Text('Bengaluru',
                   style: TextStyle (
                     color: Colors.white,
                     fontSize: 25
@@ -51,7 +64,7 @@ class _Bang2PageState extends State<Bang2Page> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),

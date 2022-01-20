@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sdp_v2/page/profile_page.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class BangPage extends StatefulWidget {
@@ -13,7 +15,7 @@ class BangPage extends StatefulWidget {
 class _BangPageState extends State<BangPage> {
   @override
   Widget build(BuildContext context) {
-    final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+    
      return Scaffold(
       backgroundColor: Colors.black45,
       body: const MyStatelessWidget(),
@@ -83,7 +85,8 @@ class _ArticleDescription extends StatelessWidget {
                 ),
               ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => MapsLauncher.launchCoordinates(
+                        12.990052971069892, 77.62685922034734),
                     icon: Icon(Icons.directions),
                     color: Colors.blue,
                   )
@@ -168,9 +171,10 @@ class MyStatelessWidget extends StatelessWidget {
             color: Colors.indigo[900],
             iconSize: 70,
             onPressed: () {
+              var docsList;
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),

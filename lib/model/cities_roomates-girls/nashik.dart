@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sdp_v2/page/profile_page.dart';
+import 'package:sdp_v2/page/profile_page2.dart';
 import 'package:sdp_v2/widget/appbar_widget.dart';
 
 class Nashik2Page extends StatefulWidget {
   static const routeName = '/nashik';
+  late QuerySnapshot userRef;
   @override
   _Nashik2PageState createState() => _Nashik2PageState();
 }
@@ -23,8 +27,18 @@ class Person {
 }
 
 class _Nashik2PageState extends State<Nashik2Page> {
-  @override
   final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
+  List docsList = [];
+     var firebaseUser =
+                                      FirebaseAuth.instance.currentUser;
+                                      
+  final CollectionReference ref =
+      FirebaseFirestore.instance.collection('Users');
+  Future<void> getData() async {
+    QuerySnapshot querySnapshot = await ref.get();
+    docsList = querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -38,7 +52,7 @@ class _Nashik2PageState extends State<Nashik2Page> {
                IconButton(icon: Icon(Icons.arrow_back, size: 35, color: Colors.blue[900]),
                     onPressed: () => Navigator.of(context).pop(),
                               ), 
-                Text('Roomates',
+                Text('Nashik',
                   style: TextStyle (
                     color: Colors.white,
                     fontSize: 25
@@ -51,7 +65,7 @@ class _Nashik2PageState extends State<Nashik2Page> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                MaterialPageRoute(builder: (context) => ProfilePage2(userRef: docsList,)),
               );
             },
           ),
@@ -71,8 +85,8 @@ class _Nashik2PageState extends State<Nashik2Page> {
 
     List<Person> persons = [
      Person(name: 'Ishika Nihalani', profileImg: 'images/avatar_girl.png', bio: "Software Developer"),
-     Person(name: 'Dinky NIhalani', profileImg: 'images/avatar_girl.png', bio: "UI Designer"),
-     Person(name: 'Creepy Story', profileImg: 'images/avatar_girl.png', bio: "Software Tester")
+     Person(name: 'Dinky Nihalani', profileImg: 'images/avatar_girl.png', bio: "tution Teacher"),
+     Person(name: 'Advika Adgaonkar', profileImg: 'images/avatar_girl.png', bio: "Software Tester")
   ];
 
    Widget personDetailCard(Person) {

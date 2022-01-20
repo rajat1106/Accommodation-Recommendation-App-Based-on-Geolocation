@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         
         SignupScreen.routeName: (ctx) => SignupScreen(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
-        HomeScreen.routeName: (ctx) => HomeScreen(),
+        //HomeScreen.routeName: (ctx) => HomeScreen(),
         ProfilePage.routeName: (ctx) => ProfilePage(),
         UserInformation.routeName: (ctx) => UserInformation(),
         RoomyPage.routeName: (ctx) => RoomyPage(),
