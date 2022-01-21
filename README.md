@@ -1,16 +1,18 @@
-# sdp_v2
+# Accommodation & Roomate Recommendation App using Flutter #
 
-A new Flutter project.
 
-## Getting Started
+<img align="center" src="https://github.com/rajat1106/dumping-yard/blob/main/WhatsApp%20Image%202022-01-21%20at%208.48.42%20PM%20(1).jpeg" width="800">
 
-This project is a starting point for a Flutter application.
+<img align="center" src="https://github.com/rajat1106/dumping-yard/blob/main/WhatsApp%20Image%202022-01-21%20at%208.48.42%20PM.jpeg" width="800">
 
-A few resources to get you started if this is your first Flutter project:
+<img align="center" src="https://github.com/rajat1106/dumping-yard/blob/main/WhatsApp%20Image%202022-01-20%20at%2010.42.17%20PM.jpeg" width="800">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img align="center" src="https://github.com/rajat1106/dumping-yard/blob/main/WhatsApp%20Image%202022-01-20%20at%2010.42.29%20PM%20(2).jpeg" width="800">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img align="center" src="https://github.com/rajat1106/dumping-yard/blob/main/WhatsApp%20Image%202022-01-20%20at%2010.42.29%20PM%20(1).jpeg" width="800">
+
+<img align="center" src="https://github.com/rajat1106/dumping-yard/blob/main/WhatsApp%20Image%202022-01-20%20at%2010.42.29%20PM.jpeg" width="800">
+
+<img align="center" src="https://github.com/rajat1106/dumping-yard/blob/main/WhatsApp%20Image%202022-01-20%20at%2010.42.51%20PM.jpeg" width="800">
+
+
